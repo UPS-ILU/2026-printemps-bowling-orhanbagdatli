@@ -58,6 +58,16 @@ class GameTest {
 		assertEquals(18, game.score());
 	}
 	
+	@Test
+	void testStrike() {
+		game.roll(10);
+		game.roll(3);
+		game.roll(4);
+		autoRoll(16, 0);
+		assertEquals(24, game.score());
+		
+	}
+	
 	private void autoRoll(int nbRoll, int nbScore) {
 		for (int i = 0; i < nbRoll; i++) {
 			game.roll(nbScore);

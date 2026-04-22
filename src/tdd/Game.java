@@ -16,7 +16,12 @@ public class Game {
 			if(isSpare(rollIndex)) {
 				score += 10 + rolls[rollIndex+2];
 				rollIndex+=2;
-			}else {
+			}
+			else if (isStrike(rollIndex)) {
+				score += 10 + rolls[rollIndex+1] + rolls[rollIndex+2];
+				rollIndex+=1;
+			}
+			else {
 				score += rolls[rollIndex] + rolls[rollIndex+1];
 				rollIndex+=2;
 			}
@@ -28,6 +33,10 @@ public class Game {
 	private boolean isSpare(int rollIndex) {
 		
 		return rolls[rollIndex] + rolls[rollIndex+1] == 10;
+	}
+	
+	private boolean isStrike(int rollIndex) {
+		return rolls[rollIndex]==10;
 	}
 	
 	
